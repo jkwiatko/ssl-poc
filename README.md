@@ -1,14 +1,21 @@
-## Generating SSL certificates and keys using keytool
+## This project implementing 2-way SSL using java spring
+ 
+**Generating SSL certificates and keys using keytool**
 
-# gen keys for client and server
-`keytool -genkey -alias client-key -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore client-key.p12 -validity 3650`
+* *gen keys*   
+```sh
+keytool -genkey -alias key-alias -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 3650 -ext "SAN:c=DNS:localhost,IP:127.0.0.1"
+```
 
-# export cert
-`keytool -export -keystore client-keystore.p12 -alias client-key -file client.cer`
+* *export cert*  
+```sh
+keytool -export -keystore keystore.p12 -alias client-key -file certificate.cer
+```
 
-
-# import cert - client should trust server & server should trust client
-`keytool -import -storetype PKCS12 -keystore client-truststore.p12 -file server.cer`
+* *import cert*    
+```sh
+keytool -import -storetype PKCS12 -keystore keytore.p12 -file certificate.cer
+```
 
 
 
