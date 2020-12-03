@@ -17,5 +17,9 @@ keytool -export -keystore keystore.p12 -alias client-key -file certificate.cer
 keytool -import -storetype PKCS12 -keystore keytore.p12 -file certificate.cer
 ```
 
+* *import from another*
+```sh
+keytool -importkeystore -srckeystore src -destkeystore dest -deststoretype PKCS12
+```
 
 
